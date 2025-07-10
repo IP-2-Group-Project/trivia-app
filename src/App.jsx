@@ -6,6 +6,9 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [difficulty, setDifficulty] = useState('easy');
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [showQuiz, setShowQuiz] = useState(false); // defaults to the setup Menu 
 
   useEffect(() => {
   fetch('https://opentdb.com/api_category.php')
@@ -27,12 +30,39 @@ function App() {
     const url = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${difficulty}&type=multiple`;
     console.log('Quiz API URL:', url);
 
-    // Fetch quiz data or navigate to quiz screen here
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setQuestions(data.results); // This will save the questions in state
+        setCurrentQuestionIndex(0);
+        setShowQuiz(true); //Starts off the trivia q's
+      })
+      .catch((error) => {
+        console.error('Error fetching trivia questions:' , error);
+      });
   };
 
   return (
     <div className="app">
       <h1>Welcome to our Trivia App</h1>
+      {!showQuiz ? (
+        <>
+
+        <SetupForm
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategorySelect={setSelectedCategory}
+          difficulty={difficulty}
+          onDifficultyChange={setDifficulty}
+        />
+        
+        <button onClick={handleStartQuiz} disabled={!selectedCategory}>
+          Start Quiz
+        </button>
+        </>
+      ) : (
+      <>
+          
       <SetupForm
         categories={categories}
         selectedCategory={selectedCategory}
@@ -43,6 +73,8 @@ function App() {
       <button onClick={handleStartQuiz} disabled={!selectedCategory}>
         Start Quiz
       </button>
+      </>
+      )}
     </div>
   );
 }
