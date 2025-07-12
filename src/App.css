@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'BabyGemoy';
+  src: url('./assets/fonts/BabyGemoy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.5rem;
+  color: #2A9D8F;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,27 +18,105 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F4A261;
+  color: #264653;
 }
 
-
-
-.card {
-  padding: 2em;
+.answer-button,
+.correct,
+.incorrect,
+.disabled,
+.selected {
+  min-width: 320px;
+  min-height: 40px;
+  padding: 0.2rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  font-weight: normal;
+  display: block;
+  margin: 0.6rem auto;
+  box-sizing: border-box;
 }
 
-.read-the-docs {
-  color: #888;
+.correct {
+  background-color: rgba(108, 194, 168, 0.847);
 }
 
+.incorrect {
+  background-color: rgba(255, 0, 0, 0.587);
+}
 
+.disabled {
+  background-color: rgba(200, 200, 200, 0.646);
+}
+
+.selected {
+  background-color: rgba(90, 92, 90, 0.47);
+}
+
+button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  min-width: 200px;
+  min-height: 48px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-quiz-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.next-question-button {
+  background-color: #2A9D8F;
+  color: white;
+}
+
+.submit-button {
+  background-color: #E76F51;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  margin: 1.5rem auto;
+  display: block;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #264653;
+  border: 2px solid #264653;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
+select:hover {
+  background-color: #f0e4d7;
+  border-color: #E76F51;
+}
+
+select:focus {
+  border-color: #2A9D8F;
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.3);
+}
