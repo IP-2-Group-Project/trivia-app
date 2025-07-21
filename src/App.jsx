@@ -1,4 +1,3 @@
-import Confetti from 'react-confetti';
 import { useState, useEffect } from 'react'
 import './App.css'
 import SetupForm from './components/SetupForm';
@@ -332,7 +331,6 @@ useEffect(() => {
   {/* Final Score Screen */}
   {quizCompleted && (
     <div className="final-score-screen">
-      <Confetti />
       <img
         src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png"
         alt="Trophy"
