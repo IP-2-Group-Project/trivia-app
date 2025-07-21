@@ -25,9 +25,9 @@ function App() {
   const [quizCompleted, setQuizCompleted] = useState(false); // Tracks if the quiz has been completed
   const [shuffledAnswers, setShuffledAnswers] = useState([]); // Tracks if the answers should be shuffled
   const [isInitialized, setIsInitialized] = useState(false); // Tracks if the app has been initialized
+  const [showResumePrompt, setShowResumePrompt] = useState(false); // Tracks if the resume prompt should be shown when page is refreshed
+
   // useEffect fetches trivia categories from the API
-
-
   useEffect(() => {
   fetch('https://opentdb.com/api_category.php')
     .then(response => response.json())
@@ -367,7 +367,6 @@ useEffect(() => {
           setShowQuiz(false);
           setQuestions([]);
           setScore(0);
-          setCategories([]);
           setDifficulty('easy');
           setPlayerName('');
           setSelectedCategory(null);
