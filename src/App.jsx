@@ -25,7 +25,7 @@ function App() {
   const [quizCompleted, setQuizCompleted] = useState(false); // Tracks if the quiz has been completed
   const [shuffledAnswers, setShuffledAnswers] = useState([]); // Tracks if the answers should be shuffled
   const [isInitialized, setIsInitialized] = useState(false); // Tracks if the app has been initialized
-  const [showResumePrompt, setShowResumePrompt] = useState(false); // Tracks if the resume prompt should be shown when page is refreshed
+ // const [showResumePrompt, setShowResumePrompt] = useState(false); // Tracks if the resume prompt should be shown when page is refreshed (v2?)
 
   // useEffect fetches trivia categories from the API
   useEffect(() => {
