@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import SetupForm from './components/SetupForm';
 
@@ -79,7 +79,7 @@ function App() {
   }, 1000);
 
   return () => clearInterval(countdown); // Cleanup on question change
-}, [currentQuestionIndex, showQuiz, submitted]);
+}, [currentQuestionIndex, showQuiz, submitted, questions.length]); // added questions.length to dependencies
 
   // Shuffle answers function
  useEffect(() => {
@@ -291,6 +291,9 @@ useEffect(() => {
                     const correct = questions[currentQuestionIndex].correct_answer; // Get the correct answer for the current question
                     if (selectedAnswer === correct) {
                       setScore(prevScore => prevScore + 1); // If the answer is correct, increment the score
+                      setIsAnswerCorrect(true); // Set to true if correct
+                    } else {
+                      setIsAnswerCorrect(false); // Set to false if incorrect
                     }
 
                   }}
@@ -367,7 +370,8 @@ useEffect(() => {
           setShowQuiz(false);
           setQuestions([]);
           setScore(0);
-          setCategories([]);
+          // removing to maintain categories when going back to home screen
+          // setCategories([]);
           setDifficulty('easy');
           setPlayerName('');
           setSelectedCategory(null);
