@@ -318,7 +318,7 @@ useEffect(() => {
                     }
                   }}
                 >
-                  Next Question
+                  {currentQuestionIndex + 1 < questions.length ? 'Next Question' : 'Finish Trivia'}
                 </button>
               )}
             </div>
@@ -342,6 +342,7 @@ useEffect(() => {
         {score} / {questions.length}
       </h3>
       <p>Ready for another round? Show this to your server and get 15% off your next appetizer!</p>
+      
       
       <button
         className="play-again-button"
@@ -373,6 +374,10 @@ useEffect(() => {
           setDifficulty('easy');
           setPlayerName('');
           setSelectedCategory(null);
+          setCurrentQuestionIndex(0);
+          setSelectedAnswer(null);
+          setSubmitted(false);
+          setTimeOut(false);
         }}
       >
         Back to Home
