@@ -27,6 +27,13 @@ function App() {
   const [isInitialized, setIsInitialized] = useState(false); // Tracks if the app has been initialized
  // const [showResumePrompt, setShowResumePrompt] = useState(false); // Tracks if the resume prompt should be shown when page is refreshed (v2?)
 
+ // Trigger confetti when quiz is completed
+  useEffect(() => {
+    if (quizCompleted && window.confetti) {
+      window.confetti();
+    }
+  }, [quizCompleted]);
+
   // useEffect fetches trivia categories from the API
   useEffect(() => {
   fetch('https://opentdb.com/api_category.php')
